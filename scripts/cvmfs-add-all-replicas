@@ -1,0 +1,17 @@
+#!/bin/bash -x
+
+COUNTER=0
+while [ $COUNTER -lt 100 ]; do
+    CVMFS_REPO_NAME_REF="CVMFS_REPO${COUNTER}_NAME"
+    CVMFS_REPO_URL_REF="CVMFS_REPO${COUNTER}_URL"
+    CVMFS_REPO_KEYS_REF="CVMFS_REPO${COUNTER}_KEYS"
+    CVMFS_REPO_OPTIONS_REF="CVMFS_REPO${COUNTER}_OPTIONS"
+    if [ -n "${!CVMFS_REPO_URL_REF}" ] && [ -n "${!CVMFS_REPO_KEYS_REF}" ] && [ -n "${!CVMFS_REPO_NAME_REF}" ]; then
+        /usr/bin/cvmfs_server add-replica -z ${!CVMFS_REPO_OPTIONS_REF} "${!CVMFS_REPO_URL_REF}" "${!CVMFS_REPO_KEYS_REF}"
+        /usr/bin/cvmfs_server snapshot "${!CVMFS_REPO_NAME_REF}"
+        echo "${!CVMFS_REPO_NAME_REF} replica added."
+    else
+        break
+    fi
+    COUNTER=$((COUNTER + 1))
+done

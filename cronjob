@@ -1,0 +1,6 @@
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+
+*/5 * * * * root cvmfs_server snapshot -ai
+6 1 * * * root cvmfs_server gc -af

@@ -1,0 +1,4 @@
+CVMFS_REPO0_NAME=stdenv.sion.csquare.run
+CVMFS_REPO0_URL=http://cvmfs.ch1.csquare.run/cvmfs/stdenv.sion.csquare.run
+CVMFS_REPO0_KEYS=/etc/cvmfs/keys/sion.csquare.run
+CVMFS_REPO0_OPTIONS='-o root'

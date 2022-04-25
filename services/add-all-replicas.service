@@ -1,0 +1,12 @@
+[Unit]
+Description=Add CVMFS repository from env
+After=httpd.service
+Requires=httpd.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/cvmfs-setup/env
+ExecStart=/usr/sbin/cvmfs-add-all-replicas
+
+[Install]
+WantedBy=multi-user.target
