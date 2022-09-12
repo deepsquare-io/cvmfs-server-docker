@@ -1,4 +1,7 @@
-FROM quay.io/rockylinux/rockylinux:8
+FROM docker.io/rockylinux/rockylinux:8
+
+# For SystemD
+ENV container docker
 
 RUN dnf install -y https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest.noarch.rpm \
   && dnf install -y \
@@ -8,6 +11,7 @@ RUN dnf install -y https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-
   cronie \
   xz \
   systemd \
+  && dnf update -y \
   && dnf clean all
 
 COPY cronjob /etc/cron.d/cronjob
