@@ -1,4 +1,4 @@
-FROM docker.io/rockylinux/rockylinux:8
+FROM docker.io/rockylinux/rockylinux:9
 
 # For SystemD
 ENV container docker
