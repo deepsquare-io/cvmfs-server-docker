@@ -28,6 +28,7 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
   systemctl enable httpd crond add-all-replicas
 
 COPY scripts/cvmfs-add-all-replicas /usr/sbin/cvmfs-add-all-replicas
+COPY logrotate.d/cvmfs /etc/logrotate.d/cvmfs
 RUN chown root:root /usr/sbin/cvmfs-add-all-replicas \
   && chmod 700 /usr/sbin/cvmfs-add-all-replicas
 
